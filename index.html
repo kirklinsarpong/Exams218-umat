@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Modern Villa at Night</title>
+<!-- A-Frame Core -->
+<script src="aframe.min.js"></script>
+
+<!-- A-Frame Inspector -->
+<script src="https://aframe.io/releases/1.5.0/aframe-inspector.min.js"></script>
+
+<!-- Your other scripts (e.g., physics, environment) -->
+<script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
+    <style>
+      #inspectorBtn {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 999;
+        padding: 10px 16px;
+        background-color: #6d071a;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Inspector Button -->
+    <button id="inspectorBtn">Open Inspector</button>
+
+    <a-scene physics="gravity: -9.8"
+             environment="preset: forest; ground: none; dressing: none; skyType: none;">
+      
+      <!-- Assets -->
+      <a-assets>
+        <a-asset-item id="villaModel" src="/models/luxury_mansion.glb"></a-asset-item>
+        <a-asset-item id="treeModel" src="/models/Mango Tree 3D Model.glb"></a-asset-item>
+        <a-asset-item id="roadModel" src="/models/Road Highway 3D Model.glb"></a-asset-item>
+        <a-asset-item id="car" src="/models/Mersedes-Benz G63 AMG 3D Model.glb"></a-asset-item>
+        <a-asset-item id="dog" src="/models/Labrador Dog.glb"></a-asset-item>
+        <a-asset-item id="water" src="/models/Animated Water Surface.glb"></a-asset-item>
+        <img id="grassTexture" src="/images/grass.jpg">
+        <img id="nightSky" src="/images/night.jpg">
+      </a-assets>
+
+      <!-- Sky -->
+      <a-sky src="#nightSky" rotation="0 -90 0"></a-sky>
+
+      <!-- Grass Ground -->
+      <a-plane position="0 -0.5 0"
+               rotation="-90 0 0"
+               width="200"
+               height="200"
+               static-body
+               material="src: #grassTexture; repeat: 40 40; side: double;">
+      </a-plane>
+
+      <!-- Road leading to the villa -->
+      <a-entity gltf-model="#roadModel" position="0 0.01 -3" rotation="0 0 0" scale="0.3 0.3 0.3"></a-entity>
+      <a-entity gltf-model="#roadModel" position="0 0.01 -7" rotation="0 0 0" scale="0.3 0.3 0.3"></a-entity>
+
+      <!-- Villa -->
+      <a-entity gltf-model="#villaModel"
+                position="-17 0 4"
+                rotation="0 180 0"
+                scale="1 1 1"
+                static-body>
+      </a-entity>
+
+      <!-- Villa -->
+      <a-entity gltf-model="#villaModel"
+                position="-17 2.7 4"
+                rotation="0 180 0"
+                scale="1 1 1"
+                static-body>
+      </a-entity>
+
+      <a-entity gltf-model="#villaModel"
+      position="-17 5.16 4"
+      rotation="0 180 0"
+      scale="1 1 1"
+      static-body>
+      </a-entity>
+
+      <a-entity gltf-model="#villaModel"
+      position="-17 7.88 4"
+      rotation="0 180 0"
+      scale="1 1 1"
+      static-body>
+      </a-entity>
+
+
+     <!-- Car beside the villa (closer) -->
+        <a-entity gltf-model="#car"
+                  position="-10.9 -0.07 -5"
+                  rotation="0 -90 0"
+                  scale="1 1 1">
+</a-entity>
+
+<!-- Dog in front of the car -->
+<a-entity gltf-model="#dog"
+          position="-11.6 -0 2"
+          rotation="0 90 0"
+          scale="0.3 0.3 0.3">
+</a-entity>
+
+<!--pool-->
+<a-entity gltf-model="#pool"
+position="-18 -0.07 13"
+rotation="0 -90 0"
+scale="2.1 2.1 2.1>
+</a-entity>
+
+<a-entity position="-12 -0.07 13" id="pool-water" 
+      ocean="density: 10; 
+        width: 8.6; 
+        depth: 14.3; 
+        speed: 0.5;
+        amplitude: 0.1;
+        amplitudeVariance: 0.05;
+        rippleHeight: 0.05;
+        rippleSpeed: 0.25;"
+      material="color: #9CE3F9; 
+           opacity: 0.7; 
+           metalness: 0.2; 
+           roughness: 0.5;
+           transparent: true;"
+      rotation="-90 0 0"></a-entity>
+</a-entity>
+
+      <!-- Lighting -->
+      <a-light type="ambient" intensity="0.3" color="#ffffff"></a-light>
+      <a-light type="point" position="0 8 0" intensity="1.0" distance="50" decay="2"></a-light>
+
+      <!-- Camera -->
+      <a-camera position="0 1.6 5"></a-camera>
+
+      <!-- Trees placed around (keeping clear of house and road) -->
+      <a-entity gltf-model="#treeModel" position="20 0 -5" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#treeModel" position="-25 0 -10" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#treeModel" position="-20 0 -25" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#treeModel" position="25 0 -30" scale="2 2 2"></a-entity>
+      <a-entity gltf-model="#treeModel" position="20 0 -40" scale="2 2 2"></a-entity>
+    </a-scene>
+  </body>
+</html>
+
